@@ -1,15 +1,15 @@
 
 #!/usr/bin/env python3
-# Gui do projektu tiger
-# Wersja 1.1
+# TigerGui
 
-#importy do guia
-
+# imports for Tk
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
+
+# other imports
 import fnmatch
 import os
 import time
@@ -21,13 +21,13 @@ import subprocess
 import platform
 import math
 
-DOSMODE = True
+IgnoreWhiteSpaceMode = True
 
-def withoutwhite(str) :
+def withoutwhite(str) : # changes to list of non-white blocks
 	res = ""
 	norm = True
 	for char in str :
-		if (char >= 'a' and char <= 'z') or (char >= 'A' and char <= 'Z') or (char >= '0' and char <= '9') :
+		if not char.isspace() :
 			res = res + char
 			norm = True
 		else :
@@ -38,9 +38,9 @@ def withoutwhite(str) :
 	return res.strip('@')
 			
 
-def fcompare(filename1, filename2) :
+def fcompare(filename1, filename2) : # file comparing
 	try :
-		if DOSMODE == True or platform.system() != 'Linux' :
+		if IgnoreWhiteSpaceMode == True or platform.system() != 'Linux' :
 			f1 = open(filename1,"r")
 			f2 = open(filename2,"r")
 			f1s = f1.read()
@@ -59,14 +59,14 @@ def fcompare(filename1, filename2) :
 		print("[FCOMPARE] - ERROR!")
 		
 
-def wykonaj(program,test,maxtime) : # statusy : WA,OK,RE
+def wykonaj(program,test,maxtime) : # status : WA,OK,RE
 	if os.path.isfile(".temporary") :
 		os.remove(".temporary")
 	if os.path.isfile(".temporary2") :
 		os.remove(".temporary2")
 
 	out = test[:-2] + "out"
-	mout = test[:-2] + "myout"
+	myout = test[:-2] + "myout"
 	#print("program:", program)
 	#print("test:", test)
 	#print("out:", out)
@@ -81,7 +81,7 @@ def wykonaj(program,test,maxtime) : # statusy : WA,OK,RE
 		return "TLE"
 	except:
 		return "RE"
-	if os.path.isfile(mout) == False :
+	if os.path.isfile(myout) == False :
 		return "RE-NOFILE"
 	if q!=0 :
 		print("RE : program returned status " + str(q) + " on test:" + test)
@@ -103,7 +103,7 @@ def wykonaj(program,test,maxtime) : # statusy : WA,OK,RE
 			return first_line
 	"""
 	#print("porównuje ",mout,out)
-	if fcompare(mout,out) :
+	if fcompare(myout,out) :
 		return "OK",elapsed_time
 	else :
 		return "WA",elapsed_time
@@ -141,7 +141,7 @@ def generuj(generator,brut,zrodlo,test,out,maxtime) :
 
 def buildGui() :
 	class Data(object) :
-		def __init__ (self) :
+		def __init__ (self) : # initial constructor 
 			self.stn = ""
 			self.sourceCodeName = ""
 			self.binaryCodeName = ""
