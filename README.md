@@ -4,5 +4,6 @@ By Stanisław Szcześniak
 
 It is written in Python3. No additional packages or libaries are required.
 
-guiattt.py - graphical user interface version (All systems which support Python3 and Tkinter)
+guiattt.py - graphical user interface version (All systems which support Python3 and Tkinter)  
+
 simpleattt.py - simple command-line version (Unix and Mac only)
