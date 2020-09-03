@@ -1,7 +1,7 @@
 # ATTT
-The algorithmic task's testing tool.
+The algorithmic tasks testing tool.
 
-It is written in Python3. No additional packages or libaries are required.
+It is written in Python 3. No additional packages or libaries are required.
 
 **Files :**
 * guiattt.py - graphical user interface version (All systems which support Python3 and Tkinter)  
