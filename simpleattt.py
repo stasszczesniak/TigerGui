@@ -22,7 +22,7 @@ class bcolors :
 
 parser = argparse.ArgumentParser(
 formatter_class=argparse.RawDescriptionHelpFormatter,description=textwrap.dedent(
-"Tiger is a command-line tool for input-output tasks.\nOn default it reads the tests from the disk\n\n" 
+"Lion is a command-line tool for input-output tasks.\nOn default it reads the tests from the disk\n\n" 
 
 "                       ___......----:'"":--....(\           \n"
 "               .-':'\"\":   :  :  :   :  :  :.(1\.`-.       \n"
